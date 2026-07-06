@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Post = {
   id: number;
@@ -8,20 +8,26 @@ type Post = {
 };
 
 function BuzzPosts() {
-  const [posts, setPosts] = useState<Post[]>([
-    {
-      id: 1,
-      employee: "John Smith",
-      message: "Welcome our new employees to the HR team.",
-      time: "2 Hours Ago",
-    },
-    {
-      id: 2,
-      employee: "Sarah",
-      message: "Annual meeting scheduled on Monday.",
-      time: "Yesterday",
-    },
-  ]);
+  const [posts, setPosts] = useState<Post[]>(() => {
+    const savedPosts = localStorage.getItem("buzzPosts");
+
+    return savedPosts
+      ? JSON.parse(savedPosts)
+      : [
+          {
+            id: 1,
+            employee: "John Smith",
+            message: "Welcome to OrangeHRM.",
+            time: "2 Hours Ago",
+          },
+          {
+            id: 2,
+            employee: "David",
+            message: "Team meeting at 3 PM.",
+            time: "Yesterday",
+          },
+        ];
+  });
 
   const [showForm, setShowForm] = useState(false);
 
@@ -29,8 +35,18 @@ function BuzzPosts() {
   const [message, setMessage] = useState("");
   const [time, setTime] = useState("");
 
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("buzzPosts", JSON.stringify(posts));
+  }, [posts]);
+
   const addPost = () => {
-    if (!employee || !message || !time) {
+    if (
+      employee.trim() === "" ||
+      message.trim() === "" ||
+      time.trim() === ""
+    ) {
       alert("Please fill all fields");
       return;
     }
@@ -55,51 +71,85 @@ function BuzzPosts() {
     setPosts(posts.filter((post) => post.id !== id));
   };
 
+  const filteredPosts = posts.filter((post) =>
+    post.employee.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="col-lg-6 mb-4">
+    <div className="container mt-4">
 
       <div className="card shadow">
 
         <div className="card-header d-flex justify-content-between align-items-center">
 
-          <h5 className="mb-0">Buzz Latest Posts</h5>
+          <h4 className="mb-0">Buzz Latest Posts</h4>
 
           <button
-            className="btn btn-success btn-sm"
+            className="btn btn-success"
             onClick={() => setShowForm(true)}
           >
-            + Add
+            + Add Post
           </button>
 
         </div>
 
         <div className="card-body">
 
+          {/* Search */}
+
+          <div className="mb-3">
+
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Employee..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+
+          </div>
+
+          {/* Add Form */}
+
           {showForm && (
+
             <div className="border rounded p-3 mb-4 bg-light">
 
-              <input
-                type="text"
-                className="form-control mb-2"
-                placeholder="Employee Name"
-                value={employee}
-                onChange={(e) => setEmployee(e.target.value)}
-              />
+              <div className="mb-3">
 
-              <textarea
-                className="form-control mb-2"
-                placeholder="Enter Message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Employee Name"
+                  value={employee}
+                  onChange={(e) => setEmployee(e.target.value)}
+                />
 
-              <input
-                type="text"
-                className="form-control mb-3"
-                placeholder="Time (Example: 2 Hours Ago)"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-              />
+              </div>
+
+              <div className="mb-3">
+
+                <textarea
+                  className="form-control"
+                  rows={3}
+                  placeholder="Write Message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+
+              </div>
+
+              <div className="mb-3">
+
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Time (Example: Just Now)"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                />
+
+              </div>
 
               <button
                 className="btn btn-primary me-2"
@@ -116,35 +166,54 @@ function BuzzPosts() {
               </button>
 
             </div>
+
           )}
 
-          {posts.map((post) => (
-            <div
-              key={post.id}
-              className="border rounded p-3 mb-3"
-            >
-              <div className="d-flex justify-content-between">
+          {/* Posts */}
 
-                <div>
-                  <h6>{post.employee}</h6>
+          {filteredPosts.length > 0 ? (
 
-                  <p className="mb-1">{post.message}</p>
+            filteredPosts.map((post) => (
 
-                  <small className="text-muted">
-                    {post.time}
-                  </small>
+              <div
+                key={post.id}
+                className="border rounded p-3 mb-3 shadow-sm"
+              >
+
+                <div className="d-flex justify-content-between">
+
+                  <div>
+
+                    <h5>{post.employee}</h5>
+
+                    <p>{post.message}</p>
+
+                    <small className="text-muted">
+                      {post.time}
+                    </small>
+
+                  </div>
+
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => deletePost(post.id)}
+                  >
+                    Delete
+                  </button>
+
                 </div>
 
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => deletePost(post.id)}
-                >
-                  Delete
-                </button>
-
               </div>
+
+            ))
+
+          ) : (
+
+            <div className="alert alert-warning">
+              No Posts Found
             </div>
-          ))}
+
+          )}
 
         </div>
 

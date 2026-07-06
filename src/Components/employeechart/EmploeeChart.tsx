@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +8,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -27,15 +26,25 @@ type Department = {
 };
 
 function EmployeeChart() {
-  const [departments, setDepartments] = useState<Department[]>([
-    { id: 1, name: "IT", percentage: 55 },
-    { id: 2, name: "HR", percentage: 25 },
-    { id: 3, name: "Finance", percentage: 20 },
-  ]);
+  const [departments, setDepartments] = useState<Department[]>(() => {
+    const savedData = localStorage.getItem("departments");
+
+    return savedData
+      ? JSON.parse(savedData)
+      : [
+          { id: 1, name: "IT", percentage: 55 },
+          { id: 2, name: "HR", percentage: 25 },
+          { id: 3, name: "Finance", percentage: 20 },
+        ];
+  });
 
   const [showForm, setShowForm] = useState(false);
   const [deptName, setDeptName] = useState("");
   const [percentage, setPercentage] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("departments", JSON.stringify(departments));
+  }, [departments]);
 
   const addDepartment = () => {
     if (deptName.trim() === "" || percentage.trim() === "") {
@@ -76,6 +85,7 @@ function EmployeeChart() {
           "#9C27B0",
           "#FFC107",
           "#00BCD4",
+          "#795548",
         ],
       },
     ],
@@ -100,19 +110,19 @@ function EmployeeChart() {
   };
 
   return (
-    <div className="col-lg-6 mb-4">
+    <div className="container mt-4">
 
       <div className="card shadow">
 
         <div className="card-header d-flex justify-content-between align-items-center">
 
-          <h5 className="mb-0">Employee Distribution</h5>
+          <h4 className="mb-0">Employee Distribution</h4>
 
           <button
-            className="btn btn-success btn-sm"
+            className="btn btn-success"
             onClick={() => setShowForm(true)}
           >
-            + Add
+            + Add Department
           </button>
 
         </div>
@@ -120,42 +130,58 @@ function EmployeeChart() {
         <div className="card-body">
 
           {showForm && (
-            <div className="card p-3 mb-3 bg-light">
+            <div className="border rounded p-3 mb-4 bg-light">
 
-              <input
-                type="text"
-                className="form-control mb-2"
-                placeholder="Department Name"
-                value={deptName}
-                onChange={(e) => setDeptName(e.target.value)}
-              />
+              <div className="row">
 
-              <input
-                type="number"
-                className="form-control mb-2"
-                placeholder="Percentage"
-                value={percentage}
-                onChange={(e) => setPercentage(e.target.value)}
-              />
+                <div className="col-md-6">
 
-              <button
-                className="btn btn-primary me-2"
-                onClick={addDepartment}
-              >
-                Save
-              </button>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Department Name"
+                    value={deptName}
+                    onChange={(e) => setDeptName(e.target.value)}
+                  />
 
-              <button
-                className="btn btn-secondary"
-                onClick={() => setShowForm(false)}
-              >
-                Cancel
-              </button>
+                </div>
+
+                <div className="col-md-6">
+
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Employee Percentage"
+                    value={percentage}
+                    onChange={(e) => setPercentage(e.target.value)}
+                  />
+
+                </div>
+
+              </div>
+
+              <div className="mt-3">
+
+                <button
+                  className="btn btn-primary me-2"
+                  onClick={addDepartment}
+                >
+                  Save
+                </button>
+
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => setShowForm(false)}
+                >
+                  Cancel
+                </button>
+
+              </div>
 
             </div>
           )}
 
-          {/* Bar Chart */}
+          {/* Chart */}
 
           <div
             style={{
@@ -168,25 +194,46 @@ function EmployeeChart() {
 
           <hr />
 
-          {departments.map((dept) => (
-            <div
-              key={dept.id}
-              className="d-flex justify-content-between align-items-center mt-2"
-            >
+          <table className="table table-bordered table-hover">
 
-              <span>
-                <strong>{dept.name}</strong> ({dept.percentage}%)
-              </span>
+            <thead className="table-dark">
 
-              <button
-                className="btn btn-danger btn-sm"
-                onClick={() => deleteDepartment(dept.id)}
-              >
-                Delete
-              </button>
+              <tr>
+                <th>Department</th>
+                <th>Percentage</th>
+                <th>Action</th>
+              </tr>
 
-            </div>
-          ))}
+            </thead>
+
+            <tbody>
+
+              {departments.map((dept) => (
+
+                <tr key={dept.id}>
+
+                  <td>{dept.name}</td>
+
+                  <td>{dept.percentage}%</td>
+
+                  <td>
+
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => deleteDepartment(dept.id)}
+                    >
+                      Delete
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              ))}
+
+            </tbody>
+
+          </table>
 
         </div>
 

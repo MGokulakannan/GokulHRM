@@ -25,6 +25,7 @@ function Dashboard() {
         <div className="container-fluid mt-4">
 
           <div className="row">
+            
 <TimeAtWork/>
 
            <MyActions/>
@@ -33,16 +34,35 @@ function Dashboard() {
 
           </div>
   {/* Row 2 */}
-          <div className="row">
-            <BuzzPosts/>
-            <EmployeeLeave />
-          </div>
+        <div className="container-fluid mt-3">
+  <div className="row">
+
+    <div className="col-lg-6 mb-4">
+      <BuzzPosts />
+    </div>
+
+    <div className="col-lg-6 mb-4">
+      <EmployeeLeave />
+    </div>
+
+  </div>
+</div>
 
           {/* Row 3 */}
-          <div className="row">
-            <EmployeeChart />
-            <LocationChart />
-          </div>
+            <div className="container-fluid mt-3">
+  <div className="row">
+
+    <div className="col-lg-6 mb-4">
+       <EmployeeChart />
+    </div>
+
+    <div className="col-lg-6 mb-4">
+      <LocationChart />
+    </div>
+
+  </div>
+</div>
+         
         </div>
 
       </div>
