@@ -25,6 +25,9 @@ import { apiRateLimiter, loginRateLimiter } from "./middleware/rateLimiter";
 
 const app = express();
 
+// Behind a hosting proxy (Render, etc.) so rate limiting and logs see the real client IP.
+app.set("trust proxy", 1);
+
 /* =========================================
    SECURITY / PARSING MIDDLEWARE
 ========================================= */
@@ -102,6 +105,11 @@ app.use("/api/reports", reportRoutes);
 
 app.get("/", (req, res) => {
   res.send("Gokul HRM Backend Running");
+});
+
+// Lightweight probe for the hosting platform's health check (no DB or auth).
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
 });
 
 /* =========================================
