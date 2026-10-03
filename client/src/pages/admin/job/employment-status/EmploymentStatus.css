@@ -1,0 +1,423 @@
+.employment-status-page {
+  min-height: calc(100vh - 110px);
+  padding: 24px 48px 38px;
+  background: #f7f6fc;
+  box-sizing: border-box;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.employment-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.employment-status-header h1 {
+  margin: 0;
+  color: #344054;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.employment-status-header p {
+  margin: 6px 0 0;
+  color: #667085;
+  font-size: 13px;
+}
+
+/* =========================
+   ADD BUTTON
+========================= */
+
+.add-employment-status-btn {
+  border: none;
+  background: #7ac21d;
+  color: #ffffff;
+  padding: 11px 24px;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-employment-status-btn:hover {
+  background: #68ab15;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.employment-status-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(30, 45, 70, 0.04);
+  overflow: hidden;
+}
+
+/* =========================
+   SEARCH AREA
+========================= */
+
+.employment-status-toolbar {
+  padding: 25px;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.employment-status-toolbar input {
+  width: 320px;
+  height: 44px;
+  padding: 0 15px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #344054;
+  font-size: 13px;
+
+  outline: none;
+  box-sizing: border-box;
+}
+
+.employment-status-toolbar input::placeholder {
+  color: #98a2b3;
+}
+
+.employment-status-toolbar input:focus {
+  border-color: #7ac21d;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.employment-status-form {
+  padding: 25px;
+  background: #ffffff;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.form-header h2 {
+  margin: 0 0 22px;
+  color: #344054;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group label span {
+  color: #e5484d;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #344054;
+  font-size: 13px;
+
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+  color: #98a2b3;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #7ac21d;
+}
+
+/* =========================
+   FORM ACTIONS
+========================= */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-btn,
+.save-btn {
+  min-width: 95px;
+  height: 40px;
+  padding: 0 20px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.cancel-btn {
+  border: 1px solid #d0d5dd;
+  background: #ffffff;
+  color: #667085;
+}
+
+.cancel-btn:hover {
+  background: #f9fafb;
+}
+
+.save-btn {
+  border: none;
+  background: #7ac21d;
+  color: #ffffff;
+}
+
+.save-btn:hover {
+  background: #68ab15;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+
+.employment-status-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.employment-status-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+  padding: 0 10px 12px;
+}
+
+/* =========================
+   TABLE HEADER
+========================= */
+
+.employment-status-table thead th {
+  height: 52px;
+  padding: 0 18px;
+
+  background: #f1f2f6;
+
+  color: #52627a;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.employment-status-table thead th:first-child {
+  border-radius: 0;
+}
+
+/* =========================
+   TABLE ROW
+========================= */
+
+.employment-status-table tbody tr {
+  background: #ffffff;
+}
+
+.employment-status-table tbody td {
+  height: 50px;
+  padding: 8px 18px;
+
+  color: #667085;
+
+  font-size: 13px;
+
+  border-top: 1px solid #f0f1f4;
+  border-bottom: 1px solid #f0f1f4;
+}
+
+.employment-status-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+/* =========================
+   NAME
+========================= */
+
+.name-cell {
+  color: #52627a !important;
+  font-weight: 500;
+}
+
+/* =========================
+   STATUS BADGE
+========================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 68px;
+  padding: 5px 12px;
+
+  border-radius: 15px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: #eaf7d9;
+  color: #5d9914;
+}
+
+.status-badge.inactive {
+  background: #fce7e7;
+  color: #c0392b;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  font-size: 0;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+/* Edit icon */
+
+.edit-btn {
+  position: relative;
+  background: #f1f3f6;
+}
+
+.edit-btn::before {
+  content: "✎";
+
+  font-size: 17px;
+  color: #667085;
+}
+
+.edit-btn:hover {
+  background: #e6e9ee;
+}
+
+/* Delete icon */
+
+.delete-btn {
+  position: relative;
+  background: #f1f3f6;
+}
+
+.delete-btn::before {
+  content: "♲";
+
+  font-size: 17px;
+  color: #667085;
+}
+
+.delete-btn:hover {
+  background: #e6e9ee;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+  height: 150px !important;
+
+  text-align: center !important;
+
+  color: #98a2b3 !important;
+
+  font-size: 13px !important;
+
+  border-bottom: none !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .employment-status-page {
+    padding: 25px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  .employment-status-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .employment-status-toolbar input {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .employment-status-page {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,161 @@
+/* ========================================
+   ADMIN PAGE
+======================================== */
+
+.admin-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 24px 32px 32px;
+  box-sizing: border-box;
+  background: var(--brand-bg);
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.admin-header {
+  margin-bottom: 28px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #243b5a;
+}
+
+.admin-header p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+
+/* ========================================
+   MODULE GRID
+======================================== */
+
+.admin-section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+
+/* ========================================
+   MODULE CARD
+======================================== */
+
+.admin-section-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-sizing: border-box;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid #edf0f4;
+}
+
+
+/* ========================================
+   MODULE TITLE
+======================================== */
+
+.admin-section-card h2 {
+  margin: 0 0 20px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  color: #243b5a;
+}
+
+
+/* ========================================
+   MODULE BUTTON
+======================================== */
+
+.admin-section-card button {
+  width: 100%;
+  min-height: 42px;
+
+  margin-bottom: 10px;
+  padding: 10px 14px;
+
+  border: 1px solid #d9e0ea;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #344563;
+
+  font-size: 14px;
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+
+/* ========================================
+   LAST BUTTON
+======================================== */
+
+.admin-section-card button:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
+
+.admin-section-card button:hover {
+  background: var(--brand-primary-soft);
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+
+/* ========================================
+   CLICK
+======================================== */
+
+.admin-section-card button:active {
+  transform: scale(0.99);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1100px) {
+  .admin-section-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .admin-page {
+    padding: 20px;
+  }
+
+  .admin-section-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,344 @@
+.pay-grades-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 24px 32px 32px;
+  box-sizing: border-box;
+  background: #f7f8fa;
+}
+
+.pay-grades-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.pay-grades-header h1 {
+  margin: 0;
+  color: #243b5a;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.pay-grades-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.add-pay-grade-button {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 7px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-pay-grade-button:hover {
+  background: var(--brand-primary-dark);
+}
+
+.pay-grade-error {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border: 1px solid #f5c2c7;
+  border-radius: 7px;
+  background: var(--brand-primary-soft);
+  color: #b42318;
+  font-size: 14px;
+}
+
+.pay-grade-form-card {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #edf0f4;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.pay-grade-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.pay-grade-form-header h2 {
+  margin: 0;
+  color: #243b5a;
+  font-size: 20px;
+}
+
+.close-pay-grade-form {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f3f5;
+  color: #64748b;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.pay-grade-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.pay-grade-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pay-grade-form-group label {
+  color: #344563;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pay-grade-form-group label span {
+  margin-left: 4px;
+  color: #d92d20;
+}
+
+.pay-grade-form-group input,
+.pay-grade-form-group textarea,
+.pay-grade-form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid #d9e0ea;
+  border-radius: 7px;
+  outline: none;
+  background: #ffffff;
+  color: #344563;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.pay-grade-form-group input:focus,
+.pay-grade-form-group textarea:focus,
+.pay-grade-form-group select:focus {
+  border-color: var(--brand-primary);
+}
+
+.pay-grade-form-group textarea {
+  resize: vertical;
+}
+
+.pay-grade-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.pay-grade-cancel-button,
+.pay-grade-save-button {
+  min-width: 90px;
+  padding: 10px 18px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pay-grade-cancel-button {
+  border: 1px solid #d9e0ea;
+  background: #ffffff;
+  color: #344563;
+}
+
+.pay-grade-save-button {
+  border: 1px solid var(--brand-primary);
+  background: var(--brand-primary);
+  color: #ffffff;
+}
+
+.pay-grade-save-button:hover {
+  background: var(--brand-primary-dark);
+}
+
+.pay-grade-save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pay-grades-card {
+  overflow: hidden;
+  border: 1px solid #edf0f4;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.pay-grades-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.pay-grade-count {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pay-grade-count strong {
+  color: #243b5a;
+}
+
+.pay-grade-count span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.pay-grade-search input {
+  width: 260px;
+  padding: 10px 13px;
+  box-sizing: border-box;
+  border: 1px solid #d9e0ea;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+}
+
+.pay-grade-search input:focus {
+  border-color: var(--brand-primary);
+}
+
+.pay-grades-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.pay-grades-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.pay-grades-table th {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafbfc;
+  color: #475569;
+  font-size: 13px;
+  text-align: left;
+}
+
+.pay-grades-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #edf0f4;
+  color: #344563;
+  font-size: 14px;
+}
+
+.pay-grades-table tbody tr:hover {
+  background: var(--brand-primary-soft);
+}
+
+.pay-grade-status {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pay-grade-status.active {
+  background: #e8f7ee;
+  color: #16804a;
+}
+
+.pay-grade-status.inactive {
+  background: #f1f3f5;
+  color: #667085;
+}
+
+.pay-grade-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pay-grade-edit-button,
+.pay-grade-delete-button {
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pay-grade-edit-button {
+  border: 1px solid #d9e0ea;
+  color: #344563;
+}
+
+.pay-grade-edit-button:hover {
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+}
+
+.pay-grade-delete-button {
+  border: 1px solid #f0b4b4;
+  color: #c62828;
+}
+
+.pay-grade-delete-button:hover {
+  background: #fff1f1;
+  border-color: #c62828;
+}
+
+.pay-grade-loading,
+.pay-grade-empty {
+  padding: 60px 20px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .pay-grade-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .pay-grades-page {
+    padding: 18px;
+  }
+
+  .pay-grades-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .add-pay-grade-button {
+    width: 100%;
+  }
+
+  .pay-grade-form {
+    grid-template-columns: 1fr;
+  }
+
+  .pay-grades-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .pay-grade-search input {
+    width: 100%;
+  }
+}

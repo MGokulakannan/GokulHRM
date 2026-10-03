@@ -1,0 +1,371 @@
+/* =====================================================================
+   GOKUL HRM — DESIGN SYSTEM
+   Premium, compact, information-dense SaaS tokens.
+===================================================================== */
+
+:root {
+  /* ---------- Brand palette ---------- */
+  --brand-primary: #4f46e5;
+  --brand-primary-dark: #4338ca;
+  --brand-primary-darker: #3730a3;
+  --brand-primary-light: #818cf8;
+  --brand-primary-soft: #eef2ff;
+  --brand-accent: #0d9488;
+  --brand-accent-dark: #0f766e;
+  --brand-accent-soft: #f0fdfa;
+
+  /* ---------- Neutrals ---------- */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-faint: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* ---------- Semantic ---------- */
+  --color-success: #059669;
+  --color-success-soft: #ecfdf5;
+  --color-success-border: #a7f3d0;
+  --color-warning: #d97706;
+  --color-warning-soft: #fffbeb;
+  --color-warning-border: #fde68a;
+  --color-danger: #e11d48;
+  --color-danger-soft: #fff1f2;
+  --color-danger-border: #fecdd3;
+  --color-info: #2563eb;
+  --color-info-soft: #eff6ff;
+  --color-info-border: #bfdbfe;
+
+  /* ---------- Legacy aliases (kept so older component CSS
+       written before this pass still resolves to the same
+       palette instead of breaking) ---------- */
+  --brand-bg: var(--color-bg);
+  --brand-surface: var(--color-surface);
+  --brand-text: var(--color-text);
+  --brand-muted: var(--color-text-muted);
+  --brand-border: var(--color-border);
+  --brand-success: var(--color-success);
+  --brand-success-soft: var(--color-success-soft);
+  --brand-warning: var(--color-warning);
+  --brand-warning-soft: var(--color-warning-soft);
+  --brand-danger: var(--color-danger);
+  --brand-danger-soft: var(--color-danger-soft);
+  --brand-radius: var(--radius-md);
+  --brand-shadow: var(--shadow-sm);
+
+  /* ---------- Spacing scale ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* ---------- Radius scale (kept modest - no giant pill cards) ---------- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+
+  /* ---------- Shadows (subtle) ---------- */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.14);
+
+  /* ---------- Typography ---------- */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+
+  /* ---------- Layout ---------- */
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 72px;
+  --topbar-height: 60px;
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+
+  color-scheme: light;
+  font: var(--text-base) / 1.5 var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--brand-primary-dark);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-sunken);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-faint);
+}
+
+/* =====================================================================
+   SHARED UTILITY CLASSES
+   Used across pages that haven't been rebuilt with dedicated CSS yet.
+===================================================================== */
+
+.gh-page {
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .gh-page {
+    padding: var(--space-4) var(--space-4) var(--space-6);
+  }
+}
+
+.gh-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.gh-state {
+  padding: var(--space-10) var(--space-4);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Shared table styling ---------- */
+.gh-table thead th {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+.gh-table tbody td {
+  padding: 12px 14px;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.gh-table tbody td.gh-wrap {
+  white-space: normal;
+  min-width: 200px;
+}
+.gh-table tbody tr {
+  transition: background var(--transition-fast);
+}
+.gh-table tbody tr:hover {
+  background: var(--color-surface-sunken);
+}
+
+/* ---------- Shared form styling ---------- */
+.gh-form-group {
+  margin-bottom: var(--space-4);
+}
+.gh-form-group:last-child {
+  margin-bottom: 0;
+}
+.gh-form-group label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+.gh-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 600px) {
+  .gh-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.gh-form-grid-full {
+  grid-column: 1 / -1;
+}
+.gh-field-error {
+  color: var(--color-danger);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* =====================================================================
+   Bootstrap is used for grid/utilities only - these overrides keep the
+   handful of Bootstrap components we use (buttons, tables, forms) on
+   the brand palette instead of Bootstrap's default blue, since the
+   shipped CSS bakes its component colors in at build time rather than
+   reading the --bs-* custom properties at runtime.
+===================================================================== */
+.btn {
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 7px 14px;
+}
+.btn-primary {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
+}
+.btn-outline-primary {
+  color: var(--brand-primary);
+  border-color: var(--color-border-strong);
+}
+.btn-outline-primary:hover {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #fff;
+}
+.btn-outline-danger {
+  color: var(--color-danger);
+  border-color: var(--color-danger-border);
+}
+.btn-outline-danger:hover {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+.bg-primary {
+  background-color: var(--brand-primary) !important;
+}
+.text-primary {
+  color: var(--brand-primary) !important;
+}
+.border-primary {
+  border-color: var(--brand-primary) !important;
+}
+.badge.bg-primary {
+  background-color: var(--brand-primary) !important;
+}
+.form-check-input:checked {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+.form-control,
+.form-select {
+  border-radius: var(--radius-md);
+  border-color: var(--color-border);
+  font-size: var(--text-sm);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--brand-primary-light);
+  box-shadow: 0 0 0 3px var(--brand-primary-soft);
+}
+.table {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+.table > :not(caption) > * > * {
+  border-bottom-color: var(--color-border);
+}
+.nav-pills .nav-link.active {
+  background-color: var(--brand-primary);
+}
+.page-item.active .page-link {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+.page-link {
+  color: var(--brand-primary);
+}
+.spinner-border.text-primary {
+  color: var(--brand-primary) !important;
+}
+.progress-bar {
+  background-color: var(--brand-primary);
+}

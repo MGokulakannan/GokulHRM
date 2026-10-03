@@ -1,0 +1,110 @@
+.set-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .set-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.set-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.set-card {
+  padding: var(--space-5);
+}
+
+.set-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-4);
+  color: var(--brand-primary);
+}
+.set-card-title h2 {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.set-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.set-profile div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+.set-profile strong {
+  font-size: var(--text-md);
+}
+.set-profile span {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+.set-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.set-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 calc(var(--space-2) * -1);
+}
+.set-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--color-text-faint);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+.set-link:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-faint);
+}
+.set-link-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.set-link-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.set-link-text strong {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+.set-link-text small {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}

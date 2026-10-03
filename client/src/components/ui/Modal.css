@@ -1,0 +1,86 @@
+.gh-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 16px;
+  animation: gh-fade-in 150ms ease;
+}
+
+@keyframes gh-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gh-modal {
+  width: 100%;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: gh-modal-in 180ms ease;
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gh-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.gh-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gh-modal-header h2 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.gh-modal-subtitle {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.gh-modal-close {
+  border: none;
+  background: transparent;
+  color: var(--color-text-faint);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+  border-radius: var(--radius-sm);
+}
+.gh-modal-close:hover {
+  color: var(--color-text);
+  background: var(--color-surface-sunken);
+}
+
+.gh-modal-body {
+  padding: 18px 20px;
+  overflow-y: auto;
+}
+
+.gh-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--color-border);
+}

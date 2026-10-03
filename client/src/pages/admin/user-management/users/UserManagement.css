@@ -1,0 +1,757 @@
+/* =====================================================
+   USER MANAGEMENT PAGE
+===================================================== */
+
+.user-management-page {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 24px 40px 50px;
+
+  background: var(--brand-bg);
+
+  color: #243b5a;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.user-management-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.user-management-header h1 {
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 600;
+
+  color: #243b5a;
+}
+
+.user-management-header p {
+  margin: 7px 0 0;
+
+  font-size: 14px;
+  color: #64748b;
+}
+
+
+/* =====================================================
+   SEARCH CARD
+===================================================== */
+
+.user-search-card {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(180px, 1fr)
+    minmax(180px, 1fr)
+    minmax(180px, 1fr)
+    minmax(180px, 1fr);
+
+  column-gap: 24px;
+  row-gap: 20px;
+
+  padding: 28px;
+
+  margin-bottom: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =====================================================
+   SEARCH GROUP
+===================================================== */
+
+.user-search-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.user-search-group label {
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #344563;
+}
+
+
+/* =====================================================
+   SEARCH INPUTS
+===================================================== */
+
+.user-search-group input,
+.user-search-group select {
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d5ddea;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #344563;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.user-search-group input::placeholder {
+  color: #94a3b8;
+}
+
+
+.user-search-group input:focus,
+.user-search-group select:focus {
+  border-color: var(--brand-primary);
+
+  box-shadow:
+    0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+/* =====================================================
+   SEARCH ACTIONS
+===================================================== */
+
+.user-search-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding-top: 10px;
+
+  border-top: 1px solid #edf0f4;
+}
+
+
+/* =====================================================
+   RESET BUTTON
+===================================================== */
+
+.reset-button {
+  min-width: 105px;
+
+  height: 42px;
+
+  padding: 0 22px;
+
+  border: 1px solid var(--brand-primary);
+
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  color: var(--brand-primary);
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.reset-button:hover {
+  background: var(--brand-primary-soft);
+}
+
+
+/* =====================================================
+   SEARCH BUTTON
+===================================================== */
+
+.search-button {
+  min-width: 105px;
+
+  height: 42px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 22px;
+
+  background: var(--brand-primary);
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.search-button:hover {
+  background: var(--brand-primary-dark);
+}
+
+
+/* =====================================================
+   USER TABLE CARD
+===================================================== */
+
+.user-table-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =====================================================
+   TABLE TOP
+===================================================== */
+
+.user-table-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  padding: 24px 28px;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+
+/* =====================================================
+   ADD BUTTON
+===================================================== */
+
+.add-user-button {
+  min-width: 110px;
+
+  height: 42px;
+
+  padding: 0 24px;
+
+  border: none;
+
+  border-radius: 22px;
+
+  background: var(--brand-primary);
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.add-user-button:hover {
+  background: var(--brand-primary-dark);
+}
+
+.add-user-button:active {
+  transform: scale(0.98);
+}
+
+
+/* =====================================================
+   RECORD COUNT
+===================================================== */
+
+.user-record-count {
+  padding: 18px 28px;
+
+  font-size: 14px;
+
+  color: #64748b;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+
+/* =====================================================
+   TABLE WRAPPER
+===================================================== */
+
+.user-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.user-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.user-table thead {
+  background: #f8fafc;
+}
+
+.user-table thead th {
+  height: 54px;
+
+  padding: 0 18px;
+
+  text-align: left;
+
+  vertical-align: middle;
+
+  border-bottom: 1px solid #dfe5ec;
+
+  color: #344563;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   COLUMN WIDTHS
+===================================================== */
+
+.user-table th:nth-child(1),
+.user-table td:nth-child(1) {
+  width: 48px;
+}
+
+.user-table th:nth-child(2),
+.user-table td:nth-child(2) {
+  width: 22%;
+}
+
+.user-table th:nth-child(3),
+.user-table td:nth-child(3) {
+  width: 18%;
+}
+
+.user-table th:nth-child(4),
+.user-table td:nth-child(4) {
+  width: 24%;
+}
+
+.user-table th:nth-child(5),
+.user-table td:nth-child(5) {
+  width: 14%;
+}
+
+.user-table th:nth-child(6),
+.user-table td:nth-child(6) {
+  width: 18%;
+}
+
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.user-table tbody tr {
+  height: 64px;
+
+  background: #ffffff;
+
+  transition: background 0.15s ease;
+}
+
+.user-table tbody tr:hover {
+  background: var(--brand-primary-soft);
+}
+
+
+.user-table tbody td {
+  padding: 10px 18px;
+
+  border-bottom: 1px solid #edf0f4;
+
+  color: #344563;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.user-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   CHECKBOX
+===================================================== */
+
+.checkbox-column {
+  text-align: center !important;
+
+  width: 48px !important;
+}
+
+.checkbox-column input {
+  width: 17px;
+
+  height: 17px;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  accent-color: var(--brand-primary);
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.user-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 72px;
+
+  height: 32px;
+
+  padding: 0 13px;
+
+  box-sizing: border-box;
+
+  border-radius: 18px;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+
+/* ACTIVE */
+
+.user-status.active {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+/* INACTIVE */
+
+.user-status.inactive {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.user-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* =====================================================
+   ACTION BUTTON BASE
+===================================================== */
+
+.user-delete-button,
+.user-edit-button {
+  width: 36px;
+
+  height: 36px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+.user-delete-button {
+  background: #f1f5f9;
+
+  color: #64748b;
+}
+
+.user-delete-button:hover {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* =====================================================
+   EDIT
+===================================================== */
+
+.user-edit-button {
+  background: #f1f5f9;
+
+  color: #64748b;
+}
+
+.user-edit-button:hover {
+  background: var(--brand-primary-soft);
+
+  color: var(--brand-primary);
+}
+
+
+/* =====================================================
+   ACTION ACTIVE
+===================================================== */
+
+.user-delete-button:active,
+.user-edit-button:active {
+  transform: scale(0.94);
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.user-loading {
+  height: 120px;
+
+  text-align: center !important;
+
+  vertical-align: middle !important;
+
+  color: #64748b !important;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.user-empty {
+  height: 120px;
+
+  text-align: center !important;
+
+  vertical-align: middle !important;
+
+  color: #64748b !important;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .user-management-page {
+    padding: 28px 25px 40px;
+  }
+
+
+  .user-search-card {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .user-management-page {
+    padding: 20px 15px 30px;
+  }
+
+
+  .user-management-header {
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+  }
+
+
+  .user-management-header h1 {
+    font-size: 24px;
+  }
+
+
+  .user-search-card {
+    grid-template-columns: 1fr;
+
+    padding: 20px;
+
+    gap: 18px;
+  }
+
+
+  .user-search-actions {
+    grid-column: auto;
+
+    justify-content: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .reset-button,
+  .search-button {
+    width: 100%;
+  }
+
+
+  .user-table-top {
+    padding: 20px;
+  }
+
+
+  .user-record-count {
+    padding: 16px 20px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .user-management-page {
+    padding: 15px 10px 25px;
+  }
+
+
+  .user-management-header h1 {
+    font-size: 21px;
+  }
+
+
+  .user-management-header p {
+    font-size: 13px;
+  }
+
+
+  .user-search-card {
+    padding: 16px;
+  }
+
+
+  .user-table {
+    min-width: 800px;
+  }
+
+}

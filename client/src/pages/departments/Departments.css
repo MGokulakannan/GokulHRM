@@ -1,0 +1,43 @@
+.dept-toolbar {
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.dept-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 320px;
+  color: var(--color-text-faint);
+}
+
+.dept-search input {
+  border: none;
+  outline: none;
+  font-size: var(--text-sm);
+  width: 100%;
+  color: var(--color-text);
+  background: transparent;
+}
+
+.dept-table-card {
+  overflow: hidden;
+}
+
+.dept-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dept-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

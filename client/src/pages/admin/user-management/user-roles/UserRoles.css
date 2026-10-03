@@ -1,0 +1,603 @@
+/* ========================================
+   USER ROLES PAGE
+======================================== */
+
+.user-roles-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+
+  padding: 24px 32px 32px;
+
+  box-sizing: border-box;
+
+  background: #f7f8fa;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.user-roles-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.user-roles-header h1 {
+  margin: 0;
+
+  color: #243b5a;
+
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.user-roles-header p {
+  margin: 7px 0 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   ADD BUTTON
+======================================== */
+
+.add-role-button {
+  border: none;
+
+  border-radius: 7px;
+
+  padding: 11px 20px;
+
+  background: var(--brand-primary);
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.add-role-button:hover {
+  background: var(--brand-primary-dark);
+}
+
+.add-role-button:active {
+  transform: scale(0.98);
+}
+
+
+/* ========================================
+   ERROR
+======================================== */
+
+.user-role-error {
+  margin-bottom: 20px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #f5c2c7;
+
+  border-radius: 7px;
+
+  background: var(--brand-primary-soft);
+
+  color: #b42318;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   FORM CARD
+======================================== */
+
+.user-role-form-card {
+  margin-bottom: 24px;
+
+  padding: 24px;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ========================================
+   FORM HEADER
+======================================== */
+
+.form-card-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.form-card-header h2 {
+  margin: 0;
+
+  color: #243b5a;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.close-form-button {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1f3f5;
+
+  color: #64748b;
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.close-form-button:hover {
+  background: #e9ecef;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.user-role-form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.form-group label {
+  color: #344563;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group label span {
+  margin-left: 4px;
+
+  color: #d92d20;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 13px;
+
+  border: 1px solid #d9e0ea;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #344563;
+
+  font-family: inherit;
+
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--brand-primary);
+
+  box-shadow:
+    0 0 0 2px rgba(
+      255,
+      115,
+      0,
+      0.08
+    );
+}
+
+
+/* ========================================
+   FORM ACTIONS
+======================================== */
+
+.form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding-top: 5px;
+}
+
+.cancel-button,
+.save-button {
+  min-width: 90px;
+
+  padding: 10px 18px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.cancel-button {
+  border: 1px solid #d9e0ea;
+
+  background: #ffffff;
+
+  color: #344563;
+}
+
+.cancel-button:hover {
+  background: #f8fafc;
+}
+
+.save-button {
+  border: 1px solid var(--brand-primary);
+
+  background: var(--brand-primary);
+
+  color: #ffffff;
+}
+
+.save-button:hover {
+  background: var(--brand-primary-dark);
+}
+
+.save-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* ========================================
+   LIST CARD
+======================================== */
+
+.user-roles-card {
+  overflow: hidden;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ========================================
+   TOOLBAR
+======================================== */
+
+.user-roles-toolbar {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px 24px;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.role-count {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.role-count strong {
+  color: #243b5a;
+
+  font-size: 16px;
+}
+
+.role-count span {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.role-search input {
+  width: 260px;
+
+  padding: 10px 13px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d9e0ea;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  color: #344563;
+
+  font-family: inherit;
+
+  font-size: 14px;
+}
+
+.role-search input:focus {
+  border-color: var(--brand-primary);
+}
+
+
+/* ========================================
+   TABLE
+======================================== */
+
+.user-roles-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.user-roles-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 700px;
+}
+
+.user-roles-table th {
+  padding: 14px 18px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  background: #fafbfc;
+
+  color: #475569;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.user-roles-table td {
+  padding: 16px 18px;
+
+  border-bottom: 1px solid #edf0f4;
+
+  color: #344563;
+
+  font-size: 14px;
+}
+
+.user-roles-table tbody tr:hover {
+  background: var(--brand-primary-soft);
+}
+
+.user-roles-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.role-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.role-status.active {
+  background: #e8f7ee;
+
+  color: #16804a;
+}
+
+.role-status.inactive {
+  background: #f1f3f5;
+
+  color: #667085;
+}
+
+
+/* ========================================
+   ACTIONS
+======================================== */
+
+.role-actions {
+  display: flex;
+
+  gap: 8px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 7px 12px;
+
+  border-radius: 6px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.edit-button {
+  border: 1px solid #d9e0ea;
+
+  background: #ffffff;
+
+  color: #344563;
+}
+
+.edit-button:hover {
+  border-color: var(--brand-primary);
+
+  color: var(--brand-primary);
+
+  background: var(--brand-primary-soft);
+}
+
+.delete-button {
+  border: 1px solid #f0b4b4;
+
+  background: #ffffff;
+
+  color: #c62828;
+}
+
+.delete-button:hover {
+  background: #fff1f1;
+
+  border-color: #c62828;
+}
+
+
+/* ========================================
+   LOADING / EMPTY
+======================================== */
+
+.role-loading,
+.role-empty {
+  padding: 50px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .user-roles-page {
+    padding: 24px;
+  }
+
+  .user-role-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .user-roles-page {
+    padding: 18px;
+  }
+
+  .user-roles-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  .add-role-button {
+    width: 100%;
+  }
+
+  .user-role-form {
+    grid-template-columns: 1fr;
+  }
+
+  .user-roles-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .role-search input {
+    width: 100%;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .cancel-button,
+  .save-button {
+    flex: 1;
+  }
+
+}
