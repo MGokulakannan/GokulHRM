@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Dashboard.css";
 
 import { getDashboard } from "../../services/dashboardService";
@@ -37,6 +37,15 @@ const Dashboard = () => {
     };
   }, []);
 
+  // Re-fetch without flashing the loading skeleton (used after check-in / check-out).
+  const refresh = useCallback(async () => {
+    try {
+      setDashboardData(await getDashboard());
+    } catch (err) {
+      console.error("Failed to refresh dashboard:", err);
+    }
+  }, []);
+
   if (loading) {
     return (
       <div className="gh-page">
@@ -65,7 +74,7 @@ const Dashboard = () => {
   return dashboardData.role === "Admin" ? (
     <AdminDashboard data={dashboardData} />
   ) : (
-    <EmployeeDashboard data={dashboardData} />
+    <EmployeeDashboard data={dashboardData} onRefresh={refresh} />
   );
 };
 

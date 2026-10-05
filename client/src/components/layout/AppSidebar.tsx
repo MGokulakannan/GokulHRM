@@ -9,6 +9,7 @@ import {
   Briefcase,
   Target,
   BarChart3,
+  Network,
   Settings,
   ChevronsLeft,
   ChevronsRight,
@@ -16,6 +17,8 @@ import {
   X,
 } from "lucide-react";
 import { useAuth } from "../../context/useAuth";
+import { isModuleEnabled, useModules } from "../../context/modulesStore";
+import type { ModuleSettings } from "../../services/configurationService";
 import "./AppSidebar.css";
 
 interface NavItem {
@@ -23,6 +26,7 @@ interface NavItem {
   label: string;
   icon: typeof LayoutDashboard;
   roles?: Array<"Admin" | "Employee">;
+  module?: keyof ModuleSettings; // hidden when switched off in Configuration → Modules
 }
 
 interface NavGroup {
@@ -46,20 +50,24 @@ const navGroups: NavGroup[] = [
   {
     label: "Operations",
     items: [
-      { to: "/attendance", label: "Attendance", icon: Clock },
-      { to: "/leave", label: "Leave Management", icon: CalendarDays },
+      { to: "/attendance", label: "Attendance", icon: Clock, module: "attendance" },
+      { to: "/leave", label: "Leave Management", icon: CalendarDays, module: "leave" },
     ],
   },
   {
     label: "Talent",
     items: [
-      { to: "/recruitment", label: "Recruitment", icon: Briefcase, roles: ["Admin"] },
-      { to: "/performance", label: "Performance", icon: Target },
+      { to: "/recruitment", label: "Recruitment", icon: Briefcase, roles: ["Admin"], module: "recruitment" },
+      { to: "/performance", label: "Performance", icon: Target, module: "performance" },
     ],
   },
   {
     label: "Insights",
-    items: [{ to: "/reports", label: "Reports", icon: BarChart3, roles: ["Admin"] }],
+    items: [{ to: "/reports", label: "Reports", icon: BarChart3, roles: ["Admin"], module: "reports" }],
+  },
+  {
+    label: "Administration",
+    items: [{ to: "/admin", label: "Organization", icon: Network, roles: ["Admin"] }],
   },
 ];
 
@@ -72,8 +80,11 @@ interface AppSidebarProps {
 
 const AppSidebar = ({ collapsed, onToggleCollapse, mobileOpen, onCloseMobile }: AppSidebarProps) => {
   const { user, logout } = useAuth();
+  const modules = useModules();
 
-  const isVisible = (item: NavItem) => !item.roles || (user && item.roles.includes(user.role));
+  const isVisible = (item: NavItem) =>
+    (!item.roles || (user && item.roles.includes(user.role))) &&
+    (!item.module || isModuleEnabled(modules, item.module));
 
   const initial = user?.firstName?.charAt(0).toUpperCase() || "?";
 

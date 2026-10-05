@@ -5,7 +5,7 @@ import { useAuth } from "../../context/useAuth";
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -24,14 +24,14 @@ const Login = () => {
     setError("");
     setSubmitting(true);
 
-    const result = await login(email, password);
+    const result = await login(identifier.trim(), password);
 
     setSubmitting(false);
 
     if (result.success) {
       navigate("/dashboard", { replace: true });
     } else {
-      setError(result.message || "Invalid email or password");
+      setError(result.message || "Invalid credentials");
     }
   };
 
@@ -48,13 +48,15 @@ const Login = () => {
 
         <form onSubmit={handleLogin}>
           <div className="form-group">
-            <label htmlFor="login-email">Email</label>
+            <label htmlFor="login-identifier">Email or Employee ID</label>
             <input
-              id="login-email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
+              id="login-identifier"
+              type="text"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              placeholder="you@company.com or EMP0001"
+              autoCapitalize="none"
+              spellCheck={false}
               required
               autoComplete="username"
             />
@@ -82,7 +84,7 @@ const Login = () => {
           <div className="login-hint">
             <strong>Demo accounts (development only)</strong>
             <span>Admin: admin@gokulhrm.com / Admin@123</span>
-            <span>Employee: employee@gokulhrm.com / Employee@123</span>
+            <span>Employee: employee@gokulhrm.com (or ID EMP0009) / Employee@123</span>
           </div>
         )}
 

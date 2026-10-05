@@ -17,7 +17,9 @@ export const loginRateLimiter = rateLimit({
 // Generic ceiling for the rest of the API so no single client can hammer it.
 export const apiRateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 300,
+  // Strict in production; generous in development, where hot reloads and
+  // React StrictMode double-fetching would otherwise lock you out of your own API.
+  limit: process.env.NODE_ENV === "production" ? 300 : 5000,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

@@ -19,6 +19,8 @@ import recruitmentRoutes from "./routes/recruitmentRoutes";
 import performanceRoutes from "./routes/performanceRoutes";
 import notificationRoutes from "./routes/notificationRoutes";
 import reportRoutes from "./routes/reportRoutes";
+import catalogRoutes from "./routes/catalogRoutes";
+import { organizationRouter, systemSettingsRouter } from "./routes/configurationRoutes";
 
 import { notFound, errorHandler } from "./middleware/errorMiddleware";
 import { apiRateLimiter, loginRateLimiter } from "./middleware/rateLimiter";
@@ -98,6 +100,15 @@ app.use("/api/performance", performanceRoutes);
 app.use("/api/notifications", notificationRoutes);
 
 app.use("/api/reports", reportRoutes);
+
+// Organization, Job, Qualifications and Nationalities lookup lists
+// (/job-categories, /work-shifts, /locations, /cost-centers, /org-units,
+// /skills, /education, /licenses, /languages, /memberships, /nationalities).
+app.use("/api", catalogRoutes);
+
+app.use("/api/organization", organizationRouter);
+
+app.use("/api/system-settings", systemSettingsRouter);
 
 /* =========================================
    ROOT

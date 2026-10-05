@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
+import { isAxiosError } from "axios";
 import api from "../services/api";
 import { getApiError } from "../utils/apiError";
 import { AuthContext } from "./authContextValue";
+import { clearModules } from "./modulesStore";
 import type { AuthContextValue, AuthUser, LoginResult } from "./authContextValue";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -31,10 +33,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     } catch (error) {
       console.error("Failed to restore session:", error);
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      setToken(null);
-      setUser(null);
+
+      // Only a rejected token ends the session. A rate limit, server error or
+      // network blip must not log the user out - keep the stored session.
+      if (isAxiosError(error) && error.response?.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        setToken(null);
+        setUser(null);
+      }
     } finally {
       setInitializing(false);
     }
@@ -45,11 +52,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = async (
-    email: string,
+    identifier: string,
     password: string
   ): Promise<LoginResult> => {
     try {
-      const response = await api.post("/auth/login", { email, password });
+      const response = await api.post("/auth/login", { identifier, password });
 
       if (!response.data?.success) {
         return {
@@ -78,6 +85,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    clearModules();
     setToken(null);
     setUser(null);
   };

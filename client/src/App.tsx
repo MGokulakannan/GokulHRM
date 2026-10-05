@@ -3,6 +3,7 @@ import type { ReactElement } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import MainLayout from "./components/layout/MainLayout";
+import ModuleGate from "./components/layout/ModuleGate";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 // =====================================================
@@ -36,6 +37,25 @@ const UserRoles = lazy(() => import("./pages/admin/user-management/user-roles/Us
 const JobTitles = lazy(() => import("./pages/admin/job/job-titles/JobTitles"));
 const PayGrades = lazy(() => import("./pages/admin/job/pay-grades/PayGrades"));
 const EmploymentStatus = lazy(() => import("./pages/admin/job/employment-status/EmploymentStatus"));
+const JobCategories = lazy(() => import("./pages/admin/job/job-categories/JobCategories"));
+const WorkShifts = lazy(() => import("./pages/admin/job/work-shifts/WorkShifts"));
+const GeneralInformation = lazy(
+  () => import("./pages/admin/organization/general-information/GeneralInformation")
+);
+const Locations = lazy(() => import("./pages/admin/organization/locations/Locations"));
+const Structure = lazy(() => import("./pages/admin/organization/structure/Structure"));
+const CostCenters = lazy(() => import("./pages/admin/organization/cost-centers/CostCenters"));
+const Skills = lazy(() => import("./pages/admin/qualifications/skills/Skills"));
+const Education = lazy(() => import("./pages/admin/qualifications/education/Education"));
+const Licenses = lazy(() => import("./pages/admin/qualifications/licenses/Licenses"));
+const Languages = lazy(() => import("./pages/admin/qualifications/languages/Language"));
+const Memberships = lazy(() => import("./pages/admin/qualifications/membership/Membership"));
+const Nationalities = lazy(() => import("./pages/admin/nationalities/Nationalities"));
+const EmailNotifications = lazy(
+  () => import("./pages/admin/configuration/email-notifications.tsx/EmailNotifications")
+);
+const Localization = lazy(() => import("./pages/admin/configuration/localization/Localization"));
+const Modules = lazy(() => import("./pages/admin/configuration/modules/Modules"));
 
 // =====================================================
 // OTHER MODULES
@@ -120,24 +140,118 @@ function App() {
           path="/admin/employment-status"
           element={withLayout(<EmploymentStatus />, ["Admin"])}
         />
+        <Route
+          path="/admin/job-categories"
+          element={withLayout(<JobCategories />, ["Admin"])}
+        />
+        <Route
+          path="/admin/work-shifts"
+          element={withLayout(<WorkShifts />, ["Admin"])}
+        />
+        <Route
+          path="/admin/general-information"
+          element={withLayout(<GeneralInformation />, ["Admin"])}
+        />
+        <Route
+          path="/admin/locations"
+          element={withLayout(<Locations />, ["Admin"])}
+        />
+        <Route
+          path="/admin/structure"
+          element={withLayout(<Structure />, ["Admin"])}
+        />
+        <Route
+          path="/admin/cost-centers"
+          element={withLayout(<CostCenters />, ["Admin"])}
+        />
+        <Route
+          path="/admin/skills"
+          element={withLayout(<Skills />, ["Admin"])}
+        />
+        <Route
+          path="/admin/education"
+          element={withLayout(<Education />, ["Admin"])}
+        />
+        <Route
+          path="/admin/licenses"
+          element={withLayout(<Licenses />, ["Admin"])}
+        />
+        <Route
+          path="/admin/languages"
+          element={withLayout(<Languages />, ["Admin"])}
+        />
+        <Route
+          path="/admin/memberships"
+          element={withLayout(<Memberships />, ["Admin"])}
+        />
+        <Route
+          path="/admin/nationalities"
+          element={withLayout(<Nationalities />, ["Admin"])}
+        />
+        <Route
+          path="/admin/email-notifications"
+          element={withLayout(<EmailNotifications />, ["Admin"])}
+        />
+        <Route
+          path="/admin/localization"
+          element={withLayout(<Localization />, ["Admin"])}
+        />
+        <Route
+          path="/admin/modules"
+          element={withLayout(<Modules />, ["Admin"])}
+        />
 
         {/* ATTENDANCE - all roles (content adapts) */}
-        <Route path="/attendance" element={withLayout(<Attendance />)} />
+        <Route
+          path="/attendance"
+          element={withLayout(
+            <ModuleGate module="attendance" label="Attendance">
+              <Attendance />
+            </ModuleGate>
+          )}
+        />
 
         {/* LEAVE - all roles (content adapts) */}
-        <Route path="/leave" element={withLayout(<Leave />)} />
+        <Route
+          path="/leave"
+          element={withLayout(
+            <ModuleGate module="leave" label="Leave Management">
+              <Leave />
+            </ModuleGate>
+          )}
+        />
 
         {/* RECRUITMENT - Admin only */}
         <Route
           path="/recruitment"
-          element={withLayout(<Recruitment />, ["Admin"])}
+          element={withLayout(
+            <ModuleGate module="recruitment" label="Recruitment">
+              <Recruitment />
+            </ModuleGate>,
+            ["Admin"]
+          )}
         />
 
         {/* PERFORMANCE - all roles (content adapts) */}
-        <Route path="/performance" element={withLayout(<Performance />)} />
+        <Route
+          path="/performance"
+          element={withLayout(
+            <ModuleGate module="performance" label="Performance">
+              <Performance />
+            </ModuleGate>
+          )}
+        />
 
         {/* REPORTS - Admin only */}
-        <Route path="/reports" element={withLayout(<Reports />, ["Admin"])} />
+        <Route
+          path="/reports"
+          element={withLayout(
+            <ModuleGate module="reports" label="Reports">
+              <Reports />
+            </ModuleGate>,
+            ["Admin"]
+          )}
+        />
 
         {/* SETTINGS - all roles (content adapts) */}
         <Route path="/settings" element={withLayout(<Settings />)} />

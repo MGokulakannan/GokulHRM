@@ -16,7 +16,24 @@ const router = express.Router();
 router.post(
   "/login",
   [
-    body("email").trim().notEmpty().withMessage("Email is required").isEmail().withMessage("Enter a valid email address"),
+    body()
+      .custom((value) => {
+        const identifier = String(value?.identifier ?? value?.email ?? "").trim();
+
+        if (!identifier) {
+          throw new Error("Email or Employee ID is required");
+        }
+
+        if (identifier.includes("@")) {
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identifier)) {
+            throw new Error("Enter a valid email address");
+          }
+        } else if (!/^[A-Za-z]{2,6}[0-9]{1,20}$/.test(identifier)) {
+          throw new Error("Enter a valid email address or Employee ID");
+        }
+
+        return true;
+      }),
     body("password").notEmpty().withMessage("Password is required"),
   ],
   validate,

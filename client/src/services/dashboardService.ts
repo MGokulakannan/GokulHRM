@@ -59,6 +59,9 @@ export interface EmployeeProfile {
   departmentName?: string;
   designationName?: string;
   profileImage?: string;
+  gender?: string;
+  status?: string;
+  dateOfJoining?: string;
 }
 
 export interface AttendanceSummary {

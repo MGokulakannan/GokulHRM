@@ -6,15 +6,22 @@ import hashPassword from "../utils/hashPassword";
 import { createEmployeeService } from "../services/authService";
 export const login = async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
+    // `identifier` may be an email or an Employee ID (e.g. EMP0009).
+    // `email` is still accepted so existing clients keep working.
+    const identifier = String(req.body.identifier ?? req.body.email ?? "").trim();
+    const { password } = req.body;
 
-    if (!email || !password) {
+    if (!identifier || !password) {
       return res.status(400).json({
         success: false,
-        message: "Email and Password are required",
+        message: "Email or Employee ID and Password are required",
       });
     }
-    const user = await User.findOne({ email });
+    const user = await User.findOne(
+      identifier.includes("@")
+        ? { email: identifier }
+        : { employeeId: identifier.toUpperCase() }
+    );
 
     if (!user) {
       return res.status(404).json({

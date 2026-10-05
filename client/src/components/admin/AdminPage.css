@@ -1,0 +1,253 @@
+/* Shared styles for the Organization (admin) sub-pages */
+
+.adm-meta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.adm-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.adm-back-link:hover {
+  text-decoration: underline;
+}
+
+.adm-crumb-sep {
+  margin: 0 6px;
+  color: var(--color-text-faint);
+}
+
+.adm-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.adm-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 240px;
+  max-width: 340px;
+  color: var(--color-text-faint);
+}
+
+.adm-search input {
+  border: none;
+  outline: none;
+  font-size: var(--text-sm);
+  width: 100%;
+  color: var(--color-text);
+  background: transparent;
+}
+
+.adm-filter {
+  width: auto;
+  min-width: 130px;
+  font-size: var(--text-sm);
+}
+
+.adm-toolbar-count {
+  margin-left: auto;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.adm-table-card {
+  overflow: hidden;
+}
+
+/* Keep Edit / Delete reachable when a wide table scrolls sideways on small screens */
+.adm-table-card .gh-table th:last-child,
+.adm-table-card .gh-table td:last-child {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  box-shadow: -8px 0 8px -8px rgba(15, 23, 42, 0.12);
+}
+
+.adm-table-card .gh-table td:last-child {
+  background: var(--color-surface);
+}
+
+.adm-table-card .gh-table th:last-child {
+  background: var(--color-surface-sunken);
+}
+
+.adm-table-card .gh-table tbody tr:hover td:last-child {
+  background: var(--color-surface-sunken);
+}
+
+.adm-cell-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adm-cell-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adm-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: var(--text-xs);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+}
+
+.adm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.adm-card-body {
+  padding: var(--space-5);
+}
+
+.adm-section-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin: 0 0 var(--space-1);
+}
+
+.adm-section-help {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-4);
+}
+
+.adm-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-sunken);
+}
+
+.adm-form-footer .adm-form-note {
+  margin-right: auto;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* On/off rows used by Email Notifications and Modules */
+.adm-toggle-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.adm-toggle-row:last-child {
+  border-bottom: none;
+}
+
+.adm-toggle-row strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.adm-toggle-row span.adm-toggle-help {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.adm-toggle-row.is-disabled {
+  opacity: 0.55;
+}
+
+.adm-switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 22px;
+}
+
+.adm-switch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.adm-switch-track {
+  position: absolute;
+  inset: 0;
+  background: var(--color-border-strong);
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.adm-switch-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease;
+}
+
+.adm-switch input:checked + .adm-switch-track {
+  background: var(--brand-primary);
+}
+
+.adm-switch input:checked + .adm-switch-track::after {
+  transform: translateX(18px);
+}
+
+.adm-switch input:focus-visible + .adm-switch-track {
+  outline: 2px solid var(--brand-primary-light);
+  outline-offset: 2px;
+}
+
+.adm-switch input:disabled {
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .adm-toolbar-count {
+    margin-left: 0;
+    width: 100%;
+  }
+}

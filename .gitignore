@@ -29,3 +29,6 @@ npm-debug.log*
 # Uploaded files (user content, not source)
 server/uploads/*
 !server/uploads/.gitkeep
+
+# Local Claude Code tooling
+.claude/
